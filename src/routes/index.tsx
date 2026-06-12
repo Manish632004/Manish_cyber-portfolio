@@ -3,16 +3,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Shield,
-  Terminal,
-  Bug,
-  Network,
   Github,
   Linkedin,
   Mail,
   ArrowRight,
   ExternalLink,
   Award,
-  Eye,
   Send,
   Code2,
   Globe,
