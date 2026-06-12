@@ -319,16 +319,14 @@ function Hero() {
 const ROLES = ["Cybersecurity Analyst", "Security Researcher", "SOC Enthusiast"];
 
 function TitleRotator() {
-  const [i, setI] = useState(0);
   const [text, setText] = useState("");
-  const [del, setDel] = useState(false);
 
-  // simple typing loop
-  useState(() => {
+  useEffect(() => {
     let mounted = true;
     let idx = 0;
     let chars = 0;
     let deleting = false;
+    let to: number;
     const tick = () => {
       if (!mounted) return;
       const full = ROLES[idx];
@@ -337,8 +335,7 @@ function TitleRotator() {
         setText(full.slice(0, chars));
         if (chars === full.length) {
           deleting = true;
-          setDel(true);
-          window.setTimeout(tick, 1400);
+          to = window.setTimeout(tick, 1400);
           return;
         }
       } else {
@@ -346,20 +343,17 @@ function TitleRotator() {
         setText(full.slice(0, chars));
         if (chars === 0) {
           deleting = false;
-          setDel(false);
           idx = (idx + 1) % ROLES.length;
-          setI(idx);
         }
       }
-      window.setTimeout(tick, deleting ? 35 : 65);
+      to = window.setTimeout(tick, deleting ? 35 : 65);
     };
-    window.setTimeout(tick, 900);
+    to = window.setTimeout(tick, 900);
     return () => {
       mounted = false;
+      window.clearTimeout(to);
     };
-  });
-  void i;
-  void del;
+  }, []);
 
   return (
     <div className="mt-3 font-mono text-lg text-[#00e5ff] sm:text-2xl">
