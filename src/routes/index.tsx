@@ -330,6 +330,8 @@ function Portfolio() {
 function Nav() {
   const links = [
     ["about", "About"],
+    ["education", "Education"],
+    ["experience", "Experience"],
     ["skills", "Skills"],
     ["projects", "Projects"],
     ["terminal", "Shell"],
