@@ -93,10 +93,10 @@ const PROJECTS = [
 ];
 
 const CERTS = [
-  { name: "CompTIA Security+", issuer: "CompTIA", year: "2024" },
-  { name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", year: "in progress" },
-  { name: "TryHackMe — Top 1%", issuer: "TryHackMe", year: "2024" },
-  { name: "HTB CPTS Track", issuer: "Hack The Box", year: "in progress" },
+  { name: "SOC Level 1", issuer: "Try Hack Me", year: "in progress" },
+  { name: "Cyber Security 101", issuer: "Try Hack Me", year: "2026" },
+  { name: "Pre Security", issuer: "Try Hack Me", year: "2026" },
+  { name: "Fundamentals of Deep Learning", issuer: "NVIDIA", year: "2025" },
 ];
 
 const EDUCATION = [
@@ -116,6 +116,15 @@ const EDUCATION = [
 
 const EXPERIENCE = [
   {
+    role: "Cybersecurity Trainee",
+    company: "Rajasthan Centre of Advanced Technology (RCAT)",
+    location: "Jaipur (Rajasthan)",
+    duration: "May 2026 – July 2026",
+    description:
+      "Gained hands-on experience in cybersecurity operations, network security, vulnerability assessment, and security monitoring through practical labs and real-world security scenarios. Worked with industry-standard tools for reconnaissance, web application security testing, log analysis, and incident investigation while developing a strong foundation in ethical hacking, Linux administration, and security best practices.",
+    tech: ["Linux", "Ethical Hacking","Network Security","SIEM Fundamentals","Wireshark","Nmap","Burp Suite"],
+  },
+  {
     role: "Web Developer Intern",
     company: "IQUINCESOFT",
     location: "Mathura (UP)",
@@ -123,7 +132,7 @@ const EXPERIENCE = [
     description:
       "Contributed to the design and development of Bariks, a responsive web-based platform focused on enhancing user experience for a health-tech solution involving Hyperbaric Oxygen Therapy (HBOT). Led the front-end development using HTML, CSS, JavaScript, React.js, and Express.js, ensuring a smooth and intuitive interface that performed seamlessly across both desktop and mobile devices.",
     tech: ["HTML", "CSS", "JavaScript", "React.js", "Express.js"],
-  },
+  }
 ];
 
 function Portfolio() {
@@ -209,7 +218,7 @@ function Portfolio() {
         </Section>
 
         <Section id="experience" tag="experience" title="Field Operations">
-          <div className="space-y-4">
+          <div className="space-y-4 mb-3">
             {EXPERIENCE.map((exp, i) => (
               <motion.div
                 key={exp.company}
@@ -256,14 +265,8 @@ function Portfolio() {
             ))}
           </div>
         </Section>
-
-        <Section id="skills" tag="skills" title="Skill Matrix">
-          <div className="grid gap-3 sm:grid-cols-2">
-            {SKILLS.map((s, i) => (
-              <SkillBar key={s.name} name={s.name} level={s.level} delay={i * 0.04} />
-            ))}
-          </div>
-        </Section>
+        
+      
 
         <Section id="terminal" tag="shell" title="Interactive Terminal">
           <p className="mb-4 text-sm text-muted-foreground">
