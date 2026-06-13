@@ -147,6 +147,37 @@ function Portfolio() {
           </div>
         </Section>
 
+        <Section id="about" tag="about" title="About the Operator">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-10">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="space-y-4 text-base leading-relaxed text-muted-foreground"
+            >
+              <p>
+                I'm <span className="text-foreground">Manish Kumar</span>, a
+                cybersecurity analyst focused on defending modern enterprises against
+                real-world adversaries. My day-to-day spans SOC operations, threat
+                hunting, and adversary emulation — translating noisy telemetry into
+                decisive action.
+              </p>
+              <p>
+                I love the discipline of digital forensics, the creativity of OSINT,
+                and the rigor of vulnerability assessment. I build tooling in Python,
+                tune SIEM detections, and write reports engineers actually want to
+                read.
+              </p>
+              <p className="font-mono text-sm text-[#a7f3d0]/80">
+                {">"} mission: protect users, harden systems, share knowledge.
+              </p>
+            </motion.div>
+
+            <IdentityCard />
+          </div>
+        </Section>
+
         <Section id="education" tag="education" title="Academic Record">
           <div className="grid gap-4 sm:grid-cols-2">
             {EDUCATION.map((edu, i) => (
@@ -223,37 +254,6 @@ function Portfolio() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </Section>
-
-        <Section id="about" tag="about" title="About the Operator">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-10">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4 text-base leading-relaxed text-muted-foreground"
-            >
-              <p>
-                I'm <span className="text-foreground">Manish Kumar</span>, a
-                cybersecurity analyst focused on defending modern enterprises against
-                real-world adversaries. My day-to-day spans SOC operations, threat
-                hunting, and adversary emulation — translating noisy telemetry into
-                decisive action.
-              </p>
-              <p>
-                I love the discipline of digital forensics, the creativity of OSINT,
-                and the rigor of vulnerability assessment. I build tooling in Python,
-                tune SIEM detections, and write reports engineers actually want to
-                read.
-              </p>
-              <p className="font-mono text-sm text-[#a7f3d0]/80">
-                {">"} mission: protect users, harden systems, share knowledge.
-              </p>
-            </motion.div>
-
-            <IdentityCard />
           </div>
         </Section>
 
