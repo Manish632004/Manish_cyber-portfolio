@@ -13,6 +13,10 @@ import {
   Code2,
   Globe,
   Cpu,
+  GraduationCap,
+  Briefcase,
+  MapPin,
+  Calendar,
 } from "lucide-react";
 
 import { CyberBackground } from "@/components/CyberBackground";
@@ -95,6 +99,33 @@ const CERTS = [
   { name: "HTB CPTS Track", issuer: "Hack The Box", year: "in progress" },
 ];
 
+const EDUCATION = [
+  {
+    degree: "B.Tech in Computer Science",
+    school: "Govt. Engineering College Bharatpur",
+    year: "2026",
+    detail: "CGPA: 7.5",
+  },
+  {
+    degree: "12th RBSE Board",
+    school: "Vivekanand Sr. Sec. School",
+    year: "2022",
+    detail: "Percentage: 81.2%",
+  },
+];
+
+const EXPERIENCE = [
+  {
+    role: "Web Developer Intern",
+    company: "IQUINCESOFT",
+    location: "Mathura (UP)",
+    duration: "May 2025 – July 2025",
+    description:
+      "Contributed to the design and development of Bariks, a responsive web-based platform focused on enhancing user experience for a health-tech solution involving Hyperbaric Oxygen Therapy (HBOT). Led the front-end development using HTML, CSS, JavaScript, React.js, and Express.js, ensuring a smooth and intuitive interface that performed seamlessly across both desktop and mobile devices.",
+    tech: ["HTML", "CSS", "JavaScript", "React.js", "Express.js"],
+  },
+];
+
 function Portfolio() {
   const [booted, setBooted] = useState(false);
 
@@ -113,6 +144,85 @@ function Portfolio() {
           <SocStats />
           <div className="mt-6">
             <PacketTicker />
+          </div>
+        </Section>
+
+        <Section id="education" tag="education" title="Academic Record">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {EDUCATION.map((edu, i) => (
+              <motion.div
+                key={edu.degree}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group relative overflow-hidden rounded-xl border border-[#00ff41]/20 bg-black/50 p-5 backdrop-blur-md transition-all hover:border-[#00ff41]/70 hover:shadow-[0_0_40px_rgba(0,255,65,0.2)]"
+              >
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px translate-y-0 bg-gradient-to-r from-transparent via-[#00ff41] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5 text-[#00ff41]" />
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#00e5ff]">
+                      {edu.year}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="mt-3 text-base font-semibold text-foreground">{edu.degree}</h3>
+                <p className="text-sm text-muted-foreground">{edu.school}</p>
+                <div className="mt-2 inline-flex items-center rounded-sm border border-[#00ff41]/30 bg-[#00ff41]/5 px-2 py-0.5 font-mono text-[11px] text-[#00ff41]">
+                  {edu.detail}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="experience" tag="experience" title="Field Operations">
+          <div className="space-y-4">
+            {EXPERIENCE.map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group relative overflow-hidden rounded-xl border border-[#00e5ff]/20 bg-black/50 p-5 backdrop-blur-md transition-all hover:border-[#00e5ff]/70 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)]"
+              >
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px translate-y-0 bg-gradient-to-r from-transparent via-[#00e5ff] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#00e5ff]/30 bg-[#00e5ff]/5">
+                      <Briefcase className="h-5 w-5 text-[#00e5ff]" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">{exp.role}</h3>
+                      <p className="text-sm text-[#00ff41]">{exp.company}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3 font-mono text-[10px] text-muted-foreground">
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar className="h-3 w-3 text-[#00e5ff]" />
+                      {exp.duration}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="h-3 w-3 text-[#00e5ff]" />
+                      {exp.location}
+                    </span>
+                  </div>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{exp.description}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-sm border border-[#00e5ff]/20 bg-[#00e5ff]/5 px-2 py-0.5 font-mono text-[11px] text-[#a7f3d0]/90"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </Section>
 
@@ -220,6 +330,8 @@ function Portfolio() {
 function Nav() {
   const links = [
     ["about", "About"],
+    ["education", "Education"],
+    ["experience", "Experience"],
     ["skills", "Skills"],
     ["projects", "Projects"],
     ["terminal", "Shell"],
