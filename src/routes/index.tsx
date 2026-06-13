@@ -13,6 +13,10 @@ import {
   Code2,
   Globe,
   Cpu,
+  GraduationCap,
+  Briefcase,
+  MapPin,
+  Calendar,
 } from "lucide-react";
 
 import { CyberBackground } from "@/components/CyberBackground";
