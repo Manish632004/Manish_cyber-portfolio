@@ -80,6 +80,10 @@
       radial-gradient(ellipse 70% 50% at 90% 30%, oklch(0.78 0.18 220 / 0.08), transparent 60%);
     background-attachment: fixed;
   }
+  html.cyber-cursor-active,
+  html.cyber-cursor-active * {
+    cursor: none !important;
+  }
   ::selection {
     background: oklch(0.86 0.22 145 / 0.3);
     color: var(--color-foreground);

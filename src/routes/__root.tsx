@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CyberCursor } from "../components/CyberCursor";
 
 function NotFoundComponent() {
   return (
@@ -78,13 +79,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { name: "description", content: "Cyber Guardian Portfolio showcases cybersecurity expertise with a modern, interactive website." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:description", content: "Cyber Guardian Portfolio showcases cybersecurity expertise with a modern, interactive website." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "twitter:description", content: "Cyber Guardian Portfolio showcases cybersecurity expertise with a modern, interactive website." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7c871e03-cbb6-466f-a11e-2f600dc43dbc/id-preview-8dabb201--44ee2812-4b13-4a20-8274-9be9ca5d2e58.lovable.app-1781276596988.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7c871e03-cbb6-466f-a11e-2f600dc43dbc/id-preview-8dabb201--44ee2812-4b13-4a20-8274-9be9ca5d2e58.lovable.app-1781276596988.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -121,6 +126,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <CyberCursor />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
