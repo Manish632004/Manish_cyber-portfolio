@@ -28,10 +28,10 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 const STATS = [
-  { label: "Projects Completed", value: 24, suffix: "+", hint: "Engagements shipped" },
-  { label: "Security Labs Solved", value: 180, suffix: "+", hint: "THM / HTB / VulnHub" },
-  { label: "Technologies Learned", value: 32, suffix: "", hint: "Tools & frameworks" },
-  { label: "Certificates Earned", value: 6, suffix: "", hint: "Industry credentials" },
+  { label: "Projects Completed", value: 10, suffix: "+", hint: "Engagements shipped" },
+  { label: "Security Labs Solved", value: 80, suffix: "+", hint: "THM / PortSwigger" },
+  { label: "Technologies Learned", value: 20, suffix: "+", hint: "Tools & frameworks" },
+  { label: "Certificates Earned", value: 4, suffix: "", hint: "Industry credentials" },
 ];
 
 export function SocStats() {
