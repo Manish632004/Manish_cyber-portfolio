@@ -567,9 +567,9 @@ function ProjectCard({ p, idx }: { p: (typeof PROJECTS)[number]; idx: number }) 
 
 function ContactPanel() {
   const items = [
-    { icon: Mail, label: "Email", value: "manish@secops.dev", href: "mailto:manish@secops.dev" },
-    { icon: Linkedin, label: "LinkedIn", value: "/in/manishkumar", href: "https://linkedin.com" },
-    { icon: Github, label: "GitHub", value: "/manishk-sec", href: "https://github.com" },
+    { icon: Mail, label: "Email", value: "manish@secops.dev", href: "mailto:manish632004@gmail.com" },
+    { icon: Linkedin, label: "LinkedIn", value: "/in/manishkumar", href: "https://www.linkedin.com/in/manish-kumar63" },
+    { icon: Github, label: "GitHub", value: "/manishk-sec", href: "https://github.com/Manish632004" },
   ];
   return (
     <div className="rounded-xl border border-[#00e5ff]/20 bg-black/50 p-5 backdrop-blur-md">
@@ -642,7 +642,7 @@ function ContactForm() {
     e.preventDefault();
     const subject = encodeURIComponent(`[secure-channel] from ${name || "visitor"}`);
     const body = encodeURIComponent(`${msg}\n\n— ${name} <${email}>`);
-    window.location.href = `mailto:manish@secops.dev?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:manish632004@gmail.com?subject=${subject}&body=${body}`;
   };
   return (
     <form

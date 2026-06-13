@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, Lock } from "lucide-react";
+import resume from "../../public/resume.pdf";
 
 const STEPS = [
   "Accessing Secure Storage...",
@@ -9,8 +10,8 @@ const STEPS = [
 ];
 
 export function ResumeDownloadButton({
-  href = "/resume.pdf",
-  filename = "Manish-Kumar-Resume.pdf",
+  href = resume,
+  filename = "resume.pdf",
   className = "",
 }: {
   href?: string;
