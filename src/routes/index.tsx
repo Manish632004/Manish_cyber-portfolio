@@ -99,6 +99,33 @@ const CERTS = [
   { name: "HTB CPTS Track", issuer: "Hack The Box", year: "in progress" },
 ];
 
+const EDUCATION = [
+  {
+    degree: "B.Tech in Computer Science",
+    school: "Govt. Engineering College Bharatpur",
+    year: "2026",
+    detail: "CGPA: 7.5",
+  },
+  {
+    degree: "12th RBSE Board",
+    school: "Vivekanand Sr. Sec. School",
+    year: "2022",
+    detail: "Percentage: 81.2%",
+  },
+];
+
+const EXPERIENCE = [
+  {
+    role: "Web Developer Intern",
+    company: "IQUINCESOFT",
+    location: "Mathura (UP)",
+    duration: "May 2025 – July 2025",
+    description:
+      "Contributed to the design and development of Bariks, a responsive web-based platform focused on enhancing user experience for a health-tech solution involving Hyperbaric Oxygen Therapy (HBOT). Led the front-end development using HTML, CSS, JavaScript, React.js, and Express.js, ensuring a smooth and intuitive interface that performed seamlessly across both desktop and mobile devices.",
+    tech: ["HTML", "CSS", "JavaScript", "React.js", "Express.js"],
+  },
+];
+
 function Portfolio() {
   const [booted, setBooted] = useState(false);
 
