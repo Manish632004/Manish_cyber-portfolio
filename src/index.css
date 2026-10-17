@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Space Grotesk', monospace;
+  }
+
+  [data-font-theme="outfit"] {
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  [data-font-theme="urbanist"] {
+    --font-heading: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  [data-font-theme="space"] {
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #020408;
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+
+  /* Custom Cyber Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #030712;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0e7490;
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.022em;
+}
+
+.font-mono-cyber {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+
+/* Glassmorphism Classes */
+.cyber-glass {
+  background: rgba(6, 12, 24, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 211, 238, 0.12);
+}
+
+.cyber-glass-card {
+  background: linear-gradient(135deg, rgba(10, 18, 34, 0.8) 0%, rgba(4, 9, 18, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(6, 182, 212, 0.05);
+}
+
+.cyber-glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(6, 182, 212, 0.15);
+}
+
+.cyber-glass-glow-green {
+  background: linear-gradient(135deg, rgba(8, 22, 18, 0.8) 0%, rgba(3, 12, 10, 0.9) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.12);
+}
+
+.cyber-glass-glow-green:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.25);
+}
+
+/* Cyber Gradients & Glows */
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.2);
+}
+
+.border-glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+}
+
+/* Subtle grid line overlay */
+.cyber-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.cyber-dot-pattern {
+  background-image: radial-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Scanline / telemetry subtle effect */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 6s linear infinite;
+}
+
+/* Custom Cyber Cursor Tracer Integration */
+@media (pointer: fine) {
+  body.cyber-custom-cursor-active,
+  body.cyber-custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
