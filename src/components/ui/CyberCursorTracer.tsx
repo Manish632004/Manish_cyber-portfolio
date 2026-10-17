@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { soundEngine } from './SoundController';
 
 interface Particle {
   x: number;
@@ -109,7 +108,6 @@ export function CyberCursorTracer({ enabled = true }: CyberCursorTracerProps) {
 
     setCursorMode((prev) => {
       if (isClickable && prev !== 'target') {
-        soundEngine.playBlip(860, 0.02, 0.015);
         return 'target';
       } else if (!isClickable && prev === 'target') {
         return 'normal';
@@ -369,7 +367,6 @@ export function CyberCursorTracer({ enabled = true }: CyberCursorTracerProps) {
     // Click handler for shockwave
     const handlePointerDown = (e: PointerEvent) => {
       setIsClicking(true);
-      soundEngine.playBlip(650, 0.03, 0.02);
 
       shockwavesRef.current.push({
         x: e.clientX,

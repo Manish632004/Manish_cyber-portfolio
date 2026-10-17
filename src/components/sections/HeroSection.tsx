@@ -29,9 +29,9 @@ export function HeroSection() {
           </span>
         </h1>
 
-        {/* Supporting Copy */}
+        {/* Short & Concise Supporting Copy */}
         <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-8 max-w-2xl">
-          {PERSONAL_DATA.heroSubcopy}
+          I'm <strong className="text-white font-semibold">{PERSONAL_DATA.name}</strong>, a Computer Science graduate from <span className="text-cyan-300 font-medium">{PERSONAL_DATA.location}</span>. With hands-on experience in SIEM threat monitoring, alert triage, and defensive security, I am actively seeking an entry-level <span className="text-emerald-400 font-medium">SOC Analyst (L1)</span> role.
         </p>
 
         {/* Call to Action Buttons */}

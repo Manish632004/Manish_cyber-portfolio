@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, FileDown, Send, CheckCircle2, Shield, MapPin, Copy, Check } from 'lucide-react';
+import { Mail, FileDown, Send, CheckCircle2, Shield, MapPin, Copy, Check, Phone } from 'lucide-react';
 import { LinkedinIcon, GithubIcon } from '../ui/BrandIcons';
 import { PERSONAL_DATA } from '../../data/portfolioData';
 import { soundEngine } from '../ui/SoundController';
@@ -134,13 +134,23 @@ export function ContactSection() {
 
               <div className="space-y-3 pt-4 text-xs font-mono-cyber text-slate-300">
                 <div className="flex items-center gap-2.5">
-                  <MapPin className="w-4 h-4 text-cyan-400" />
+                  <MapPin className="w-4 h-4 text-cyan-400 shrink-0" />
                   <span>{PERSONAL_DATA.location} (Open to Relocation / Remote)</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-cyan-400" />
-                  <span>{PERSONAL_DATA.email}</span>
+                  <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+                  <a href={`mailto:${PERSONAL_DATA.email}`} className="hover:text-cyan-300 transition-colors">
+                    {PERSONAL_DATA.email}
+                  </a>
                 </div>
+                {PERSONAL_DATA.phone && (
+                  <div className="flex items-center gap-2.5">
+                    <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <a href={`tel:${PERSONAL_DATA.phone.replace(/\s+/g, '')}`} className="hover:text-cyan-300 transition-colors">
+                      {PERSONAL_DATA.phone}
+                    </a>
+                  </div>
+                )}
               </div>
 
               <div className="pt-4">

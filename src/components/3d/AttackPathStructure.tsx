@@ -45,8 +45,8 @@ export function AttackPathStructure({ pointer, scrollProgress, activeStageIndex 
     }
   });
 
-  // Active range roughly 0.38 -> 0.54
-  const sceneOpacity = Math.max(0, Math.min(1, (scrollProgress - 0.34) * 8) * Math.min(1, (0.58 - scrollProgress) * 7));
+  // Active range roughly 0.30 -> 0.62
+  const sceneOpacity = Math.max(0, Math.min(1, (scrollProgress - 0.28) * 8) * Math.min(1, (0.64 - scrollProgress) * 7));
 
   if (sceneOpacity <= 0.01) return null;
 

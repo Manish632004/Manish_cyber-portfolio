@@ -1,8 +1,12 @@
-import { Shield, ArrowUp } from 'lucide-react';
+import { Shield, ArrowUp, RotateCcw } from 'lucide-react';
 import { PERSONAL_DATA } from '../../data/portfolioData';
 import { soundEngine } from '../ui/SoundController';
 
-export function Footer() {
+interface FooterProps {
+  onReplayIntro?: () => void;
+}
+
+export function Footer({ onReplayIntro }: FooterProps) {
   const scrollToTop = () => {
     soundEngine.playBlip(900, 0.04, 0.04);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,11 +31,25 @@ export function Footer() {
         </div>
 
         {/* Status & Back to Top */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-2 text-[11px] text-emerald-400/90">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>ALL SYSTEMS DEFENDED</span>
           </div>
+
+          {onReplayIntro && (
+            <button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                onReplayIntro();
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-white transition-all cursor-pointer text-[11px]"
+              title="Replay opening sequence"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="hidden sm:inline">REBOOT INTRO</span>
+            </button>
+          )}
 
           <button
             onClick={scrollToTop}

@@ -2,21 +2,9 @@
 
 @layer base {
   :root {
-    --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Space Grotesk', monospace;
-  }
-
-  [data-font-theme="outfit"] {
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  [data-font-theme="urbanist"] {
-    --font-heading: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  [data-font-theme="space"] {
-    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Sora', sans-serif;
+    --font-sans: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
 
   * {

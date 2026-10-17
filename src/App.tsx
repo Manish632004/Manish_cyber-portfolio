@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { CyberScene } from './components/3d/CyberScene';
-import { Navbar, type FontTheme } from './components/ui/Navbar';
+import { Navbar } from './components/ui/Navbar';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { ProjectModal } from './components/ui/ProjectModal';
 import { PhishingAnalyzerModal } from './components/ui/PhishingAnalyzerModal';
 import { SplunkTerminalModal } from './components/ui/SplunkTerminalModal';
 import { SocPanelModal } from './components/ui/SocPanelModal';
 import { CyberCursorTracer } from './components/ui/CyberCursorTracer';
+import { CyberOpeningLoader } from './components/ui/CyberOpeningLoader';
 
 // Sections
 import { HeroSection } from './components/sections/HeroSection';
@@ -26,48 +27,9 @@ import type { Project } from './data/portfolioData';
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [currentSection, setCurrentSection] = useState('hero');
-  const [enable3D, setEnable3D] = useState(true);
-  const [enableTracer, setEnableTracer] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('manish_cyber_cursor_tracer');
-      return saved !== null ? saved === 'true' : true;
-    }
-    return true;
-  });
 
-  // Typography style preset ('outfit' is default luxury/elegant, 'urbanist' is modern neo-grotesque, 'space' is cybernetic)
-  const [fontTheme, setFontTheme] = useState<FontTheme>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('manish_cyber_font_theme');
-      if (saved === 'urbanist' || saved === 'space') return saved;
-    }
-    return 'outfit';
-  });
-
-  useEffect(() => {
-    document.documentElement.dataset.fontTheme = fontTheme;
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('manish_cyber_font_theme', fontTheme);
-    }
-  }, [fontTheme]);
-
-  const handleCycleFontTheme = () => {
-    setFontTheme((current) => {
-      if (current === 'outfit') return 'urbanist';
-      if (current === 'urbanist') return 'space';
-      return 'outfit';
-    });
-  };
-
-  const handleToggleTracer = () => {
-    setEnableTracer((prev) => {
-      const next = !prev;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('manish_cyber_cursor_tracer', String(next));
-      }
-      return next;
-    });
-  };
+  // Opening boot sequence state
+  const [isBooting, setIsBooting] = useState(true);
 
   // Modals & Interactive States
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -114,14 +76,33 @@ export default function App() {
         }
       }
 
-      // Auto update attack path stage index as user scrolls past attack section
+      // Auto update attack path stage index as user scrolls through attack section
       const attackEl = document.getElementById('attack-surface');
       if (attackEl) {
         const rect = attackEl.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const sectionProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)));
-          const stageIndex = Math.min(4, Math.floor(sectionProgress * 5));
-          setActiveAttackStageIndex(stageIndex);
+        const totalTravel = attackEl.offsetHeight - window.innerHeight;
+
+        if (totalTravel > 0) {
+          if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+            // User is actively inside the pinned scroll track
+            const progress = Math.max(0, Math.min(1, -rect.top / totalTravel));
+            // Card closest to center (0, 0.25, 0.5, 0.75, 1.0)
+            const stageIndex = Math.min(4, Math.max(0, Math.round(progress * 4)));
+            setActiveAttackStageIndex(stageIndex);
+          } else if (rect.top > 0) {
+            // Above section
+            setActiveAttackStageIndex(0);
+          } else {
+            // Scrolled past section -> stay on last stage (Remediation)
+            setActiveAttackStageIndex(4);
+          }
+        } else {
+          // Fallback if not pinned
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const sectionProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)));
+            const stageIndex = Math.min(4, Math.floor(sectionProgress * 5));
+            setActiveAttackStageIndex(stageIndex);
+          }
         }
       }
     };
@@ -142,31 +123,28 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#020408] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* High-Tech Cyber Cursor Tracer */}
-      <CyberCursorTracer enabled={enableTracer} />
+      {/* High-Tech Cybersecurity Opening / Boot Animation */}
+      {isBooting && (
+        <CyberOpeningLoader onComplete={() => setIsBooting(false)} />
+      )}
+
+      {/* High-Tech Cyber Cursor Tracer (Permanently Active) */}
+      <CyberCursorTracer enabled={true} />
 
       {/* Scroll Telemetry Progress Bar & HUD */}
       <ScrollProgress progress={scrollProgress} currentSection={currentSection} />
 
-      {/* Futuristic Navbar */}
-      <Navbar
-        currentSection={currentSection}
-        enable3D={enable3D}
-        onToggle3D={() => setEnable3D(!enable3D)}
-        enableTracer={enableTracer}
-        onToggleTracer={handleToggleTracer}
-        fontTheme={fontTheme}
-        onCycleFontTheme={handleCycleFontTheme}
-      />
+      {/* Clean Futuristic Navbar */}
+      <Navbar currentSection={currentSection} />
 
-      {/* Main 3D Canvas Coordinator (fixed background) */}
+      {/* Main 3D Canvas Coordinator (fixed background, permanently active) */}
       <CyberScene
         scrollProgress={scrollProgress}
         onSelectSocPanel={(panelId) => setSelectedSocPanelId(panelId)}
         activeAttackStageIndex={activeAttackStageIndex}
         selectedSkillCategoryId={selectedSkillCategoryId}
         onSelectSkillCategory={(id) => setSelectedSkillCategoryId(id)}
-        enable3D={enable3D}
+        enable3D={true}
       />
 
       {/* 10 Immersive Narrative Story Sections */}
@@ -215,7 +193,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onReplayIntro={() => setIsBooting(true)} />
 
       {/* Interactive Modals */}
       <ProjectModal

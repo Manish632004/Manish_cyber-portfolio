@@ -56,7 +56,7 @@ function CinematicCameraController({ scrollProgress }: { scrollProgress: number 
       lookX = 0;
       lookY = 0.2;
       lookZ = 0;
-    } else if (scrollProgress < 0.60) {
+    } else if (scrollProgress < 0.64) {
       // Scene 4: Attack Path (angled view across stages)
       targetX = 0;
       targetY = 0.1;
